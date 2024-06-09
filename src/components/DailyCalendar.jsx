@@ -36,7 +36,8 @@ function DailyCalendar({setPeriod, selectedMonth=0, selectedDate=false}) {
     };
 
     useEffect(() => {
-      setCurrentDate(selectedDate);
+      if(selectedDate)
+        setCurrentDate(selectedDate);
       }
     , []);
   
