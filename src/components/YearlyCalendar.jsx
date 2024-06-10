@@ -1,6 +1,6 @@
 import { Calendar, Carousel, ConfigProvider, Button, Dropdown } from 'antd';
 import dayjs from 'dayjs';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import debounce from 'debounce';
 import { ArrowIcon, BlackArrowIcon} from './icons';
@@ -35,7 +35,11 @@ function YearlyCalendar({setPeriod, setMonth, setDay}) {
     const [headerCurrentYear, setHeaderCurrentYear] = useState(dayjs().year());
     const [yearRange, setYearRange] = useState([currentYear, currentYear+1, currentYear-1]);
     
-    
+    useEffect(() => {
+        setMonth(0);
+        setDay(false);
+    }, []);
+
     const handleChangeDay = (m, d) => {
         setMonth(m);
         setDay(d);

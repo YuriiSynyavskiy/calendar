@@ -17,7 +17,7 @@ const CurrentCalendar = (key, setPeriod, month, setMonth, day, setDay) => {
   console.log(key)
   switch (key) {
     case '1': return <YearlyCalendar setPeriod={setPeriod} setMonth={setMonth} setDay={setDay}/> 
-    case '2': return <MonthlyCalendar setPeriod={setPeriod} selectedMonth={month}/> 
+    case '2': return <MonthlyCalendar setPeriod={setPeriod} selectedMonth={month} setDay={setDay} setMonth={setMonth}/> 
     case '3': return <DailyCalendar setPeriod={setPeriod} selectedMonth={month} selectedDate={day}/>
   }
 };

@@ -559,11 +559,11 @@ body, html {
     margin-right: auto;
   }
   .form .title {
-    height: 40px;
+    height: auto;
     text-align: center;
   }
   .form .text {
-    max-height: 150px;
+    height: auto;
     height: auto;
     overflow: visible;
   }
@@ -611,6 +611,10 @@ body, html {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
+  }
+  .monthly-month-image img{
+    height: 300px;
+    width: 300px;
   }
 }
 
@@ -665,4 +669,31 @@ body, html {
 
 body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+@media (max-width: 500px) {
+  .monthly-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .form-content {
+    width: 100%;
+  }
+  .monthly-calendar table th {
+    padding: 5px;
+    font-size: 18px;
+  }
+  .monthly-calendar table td {
+    font-size: 20px;
+    padding: 5px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    bottom: 2px;
+  }
 }

@@ -27,7 +27,7 @@ const MONTHS_rod = [
   "січня", "лютого", "березня", "квітня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"
 ]
 
-function MonthlyCalendar({setPeriod, selectedMonth = 0, selectedYear = false}) {
+function MonthlyCalendar({setPeriod, selectedMonth = 0, setDay, setMonth, selectedYear = false}) {
   
     const defineClassNameTableCell = (i, j) => {
       let className = "";
@@ -80,6 +80,7 @@ function MonthlyCalendar({setPeriod, selectedMonth = 0, selectedYear = false}) {
       setPeriod(e.key);
     };
     const afterChangeCarousel = (index) => {
+      setMonth(index);
       setCurrentMonth(index);
       setCurrentMonthData(CalendarData[MONTHS[index]]);
       carouselRefForm.current.goTo(0);
@@ -87,10 +88,15 @@ function MonthlyCalendar({setPeriod, selectedMonth = 0, selectedYear = false}) {
     const handleChangeMonth = (day) => {
       if(day.style.includes('next'))
         handleNext();
-      if(day.style.includes('prev'))
+      else if(day.style.includes('prev'))
         handlePrev()
-      if(day.event)
-        carouselRefForm.current.goTo(Object.keys(currentMonthData).indexOf(day.number.toString()));
+      else if(day.event) {
+        setDay(day.number);
+        setPeriod('3');
+      }
+      else {
+        let a = 1;
+      }
     }
     return (
       <>
