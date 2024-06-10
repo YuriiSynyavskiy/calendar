@@ -665,6 +665,9 @@ body, html {
   .header {
     margin: 0 20px;
   }
+  .monthly-month-controls {
+    width: auto;
+  }
 }
 
 body {
@@ -675,7 +678,7 @@ body {
   .monthly-controls {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
   }
 }
 
