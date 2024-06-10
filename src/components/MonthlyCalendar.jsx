@@ -147,7 +147,7 @@ function MonthlyCalendar({setPeriod, selectedMonth = 0, selectedYear = false}) {
                                 <tr>
                                 {
                                   week.map((day, j) => (
-                                    <td className={defineClassNameTableCell(i ,j) + ` ${day.style}` } onClick={() => handleChangeMonth(day)} >
+                                    <td className={defineClassNameTableCell(i ,j) + ` ${day.style}` + `${day.event ? ' event' : ''}` } onClick={() => handleChangeMonth(day)} >
                                       {day.number}
                                       {
                                         day.event && <div className='dot'></div>
@@ -182,7 +182,7 @@ function MonthlyCalendar({setPeriod, selectedMonth = 0, selectedYear = false}) {
                         <p className="monthly-month-name">{dayNumber} {MONTHS_rod[currentMonth]}</p>
                         <div className="arrow right" onClick={handleNextForm}><BlueArrowIcon/></div>
                       </div>
-                      <div><img src={window.location.origin + `/photos/${currentMonthData[+dayNumber]['Фото_Місяць']}`} height='400px'/></div>
+                      <div className="monthly-month-image"><img src={window.location.origin + `/photos/${currentMonthData[+dayNumber]['Фото_Місяць']}`} height='400px'/></div>
                     </div>  
                     </div>
                   </div>

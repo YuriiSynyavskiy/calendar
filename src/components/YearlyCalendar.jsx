@@ -27,11 +27,6 @@ const items = [
 
 function YearlyCalendar({setPeriod, setMonth, setDay}) {
     const carouselRef = useRef(null)
-
-    const wrapperStyle = {
-        width: 300,
-        marginTop: 15
-    };
     const months = [
         "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"
     ]
@@ -97,67 +92,70 @@ function YearlyCalendar({setPeriod, setMonth, setDay}) {
 
     return (
     <>
+        <div className="background-wrapper"></div>
         <div className="bg">
             <img src="background-image.png"/>
         </div>
         <div className="bg-opacity"></div>
-        <div className="header">
-            <h1>Воїни Волі: Від Гетьманщини до УПА</h1>
-            <div className="subheader">
-                <div className="header-controls">
-                    <div className="arrow left" onClick={handlePrev}><ArrowIcon/></div>
-                    {headerCurrentYear}
-                    <div className="arrow right" onClick={handleNext}><ArrowIcon/></div>
-                </div>
-                <div className="dropdown-control">
-                    <Dropdown
-                        menu={{
-                        items,
-                        selectable: true,
-                        defaultSelectedKeys: ['1'],  
-                        onClick: handlePeriodMenuClick
-                        }}
-                        placement="bottom"
-                    >
-                        <div className="dropdown">
-                            <p>Рік</p>
-                            <div className="arrow down"><BlackArrowIcon/></div>
-                        </div>
-                    </Dropdown>
+        <div className='content'>
+            <div className="header">
+                <h1>Воїни Волі: Від Гетьманщини до УПА</h1>
+                <div className="subheader">
+                    <div className="header-controls">
+                        <div className="arrow left" onClick={handlePrev}><ArrowIcon/></div>
+                        {headerCurrentYear}
+                        <div className="arrow right" onClick={handleNext}><ArrowIcon/></div>
+                    </div>
+                    <div className="dropdown-control">
+                        <Dropdown
+                            menu={{
+                            items,
+                            selectable: true,
+                            defaultSelectedKeys: ['1'],  
+                            onClick: handlePeriodMenuClick
+                            }}
+                            placement="bottom"
+                        >
+                            <div className="dropdown">
+                                <p>Рік</p>
+                                <div className="arrow down"><BlackArrowIcon/></div>
+                            </div>
+                        </Dropdown>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div className="yearly-carousel">
-            <ConfigProvider locale={locale}>
+            <div className="yearly-carousel">
+                <ConfigProvider locale={locale}>
 
-            <Carousel dots={false} afterChange={switchYear} ref={carouselRef}>
-                    {
-                        yearRange.map((year) => (
-                            <div>
-                                <div className='calendar-main'>
-                                {
-                                    [0,1,2].map((quarter) => (
-                                        <div className='calendar-main-row'>
-                                            {
-                                                [1,2,3,4].map((monthNumb) => (
-                                                    <div>
-                                                        <a className="calendar-main-row-month-title" onClick={() => redirectToMonthCalendar(quarter*4+monthNumb - 1)}>{months[quarter*4+monthNumb - 1]}</a>
-                                                        <div style={wrapperStyle}>
-                                                            <Calendar value={dayjs(`${year}-${quarter*4+monthNumb}-01`)} fullscreen={false} headerRender={false} fullCellRender={cellRender}/>
+                <Carousel dots={false} afterChange={switchYear} ref={carouselRef}>
+                        {
+                            yearRange.map((year) => (
+                                <div>
+                                    <div className='calendar-main'>
+                                    {
+                                        [0,1,2].map((quarter) => (
+                                            <div className='calendar-main-row'>
+                                                {
+                                                    [1,2,3,4].map((monthNumb) => (
+                                                        <div className='calendar-main-row-month-wrapper'>
+                                                            <a className="calendar-main-row-month-title" onClick={() => redirectToMonthCalendar(quarter*4+monthNumb - 1)}>{months[quarter*4+monthNumb - 1]}</a>
+                                                            <div className="calendar-main-row-month-content">
+                                                                <Calendar value={dayjs(`${year}-${quarter*4+monthNumb}-01`)} fullscreen={false} headerRender={false} fullCellRender={cellRender}/>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                ))
-                                            }
-                                        </div>
-                                    ))
-                                }
+                                                    ))
+                                                }
+                                            </div>
+                                        ))
+                                    }
+                                    </div>
                                 </div>
-                            </div>
-                        ))
-                    }
-            </Carousel>
-            </ConfigProvider>
+                            ))
+                        }
+                </Carousel>
+                </ConfigProvider>
+            </div>
         </div>
     </>
 );
