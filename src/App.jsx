@@ -25,6 +25,7 @@ const CurrentCalendar = (key, setPeriod, month, setMonth, day, setDay) => {
 
 
 function App() {
+
   useEffect(() => {
     setTimeout(() => setPeriod('1'), 10000);
   }, []);
