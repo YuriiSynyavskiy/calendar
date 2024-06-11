@@ -1,13 +1,17 @@
 function SplashScreen() {
     return (
       <div className="splashcreen">
-        <div className="background-images">
+        <div className="background-image">
+            {/* <div className="background-images">*/}
+            <img src={window.location.origin + "/splash-screen.jpg"} />
+            {/* 
             <div className="background-images-image left-image">
                 <img src={window.location.origin + "/splash-screen-left.png"} />
             </div>
+            
             <div className="background-images-image right-image">
                 <img src={window.location.origin + "/splash-screen-right.png"} />
-            </div>
+            </div>*/}
         </div>
         <div className="splashcreen-content">
             <div className="splashcreen-content-title">
