@@ -115,7 +115,8 @@ function DailyCalendar({setPeriod, selectedMonth=0, selectedDate=false}) {
                   {
                     currentDateData[currentDate]['Посилання'].map((ref) => (
                       <li>
-                        <span>{ref}</span>
+                        <span>{ref.split("&")[0].trim()}</span>
+                        <a href={ref.split("&")[1].trim()}>{ref.split("&")[1].trim()}</a>
                       </li>
                     ))
                   }
