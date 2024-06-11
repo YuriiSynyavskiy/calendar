@@ -99,7 +99,7 @@ function YearlyCalendar({setPeriod, setMonth, setDay}) {
         <div className="background-wrapper"></div>
         <div className="bg">
             <img src="background-image.png"/>
-        </div>
+        </div>*
         <div className="bg-opacity"></div>
         <div className='content'>
             <div className="header">
